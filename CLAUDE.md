@@ -1,6 +1,6 @@
 # SwiftCut
 
-A lightweight, local-first video editor built with Tauri (Rust) + React. It stays fast and lean, with no forced cloud or forced login, which is the opposite of what ClipChamp turned into.
+A lightweight, local-first video editor built with Tauri (Rust) + React. Core editing must work fully offline; keep cloud services and accounts out of the core flows.
 
 ## Architecture
 
@@ -30,3 +30,5 @@ See `scripts` in the root `package.json`. The main ones:
 - `pnpm dev:web`: run the frontend in a browser with fast HMR and no Rust rebuild.
 - `pnpm build` builds the frontend; `pnpm bundle` produces a desktop installer.
 - `pnpm lint`, `pnpm typecheck`, and `pnpm test` run via Nx across the workspace.
+
+The Tauri commands (`pnpm dev`, `pnpm bundle`) need a Rust toolchain with `cargo` on PATH, plus the MSVC build tools on Windows.

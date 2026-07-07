@@ -1,11 +1,6 @@
-# SwiftCut Desktop App
+# SwiftCut Desktop App (apps/desktop)
 
-The Tauri v2 desktop app has two halves under one project:
-
-- `src-frontend/`: the React SPA (Vite, TanStack Router/Query/Form, shadcn/ui) that renders as the webview UI.
-- `src-tauri/`: the Rust core (window, native APIs, and later the video pipeline).
-
-From the repo root, `pnpm dev:web` iterates on the UI in a browser with fast HMR, and `pnpm dev` launches the full desktop app.
+The frontend lives in `src-frontend/` (React + Vite) and the Rust core in `src-tauri/`. See the root `CLAUDE.md` for the high-level architecture, commands, and the frontend-to-Rust bridge.
 
 ## Frontend domain structure
 
@@ -27,10 +22,6 @@ src-frontend/<domain>/
 - Import directly from source packages. Never create re-export wrapper files.
 - Third-party and native integrations go under `src-frontend/integrations/<service>/`.
 
-## Calling Rust from the frontend
+## Gotcha
 
-Call Rust `#[tauri::command]`s from the frontend with `invoke("command_name")` from `@tauri-apps/api/core`. See `src-tauri/src/lib.rs` for the registered commands (for example the `app_version` smoke test). Guard any invoke call that must tolerate running in a plain browser (`pnpm dev:web`), where there is no IPC.
-
-## Note
-
-There is no auth in the app right now; it is local-only. Accounts and auth return alongside future cloud/AI features. `packages/supabase` stays dormant and unused until then.
+`invoke()` fails in a plain browser (`pnpm dev:web`) because there is no Tauri IPC. Guard any `invoke` that must run there with `isTauri()` from `@tauri-apps/api/core`.
