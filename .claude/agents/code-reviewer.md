@@ -12,9 +12,11 @@ You are a code reviewer for this monorepo. When invoked:
    - Vertical slice architecture (no technology-based splitting)
    - Correct import paths (`@workspace/ui/*`, `@/*`)
    - No re-export wrapper files
+   - `.throwOnError()` on Supabase calls
    - Zod schemas for validation
    - TanStack Form for forms (not react-hook-form)
-   - Frontend ↔ Rust done via `#[tauri::command]` + `invoke()`, with heavy work off the UI thread
+   - RLS enabled on any new tables
+   - Rust called from the frontend via `#[tauri::command]` + `invoke()`, with heavy work kept off the UI thread
 3. Check for security issues:
    - No secrets or keys in committed code
    - No error message leaks in production (`import.meta.env.DEV` guard)
