@@ -2,7 +2,7 @@ name: Generate Types
 
 on:
   pull_request:
-    branches: ["main", "master", "development", "develop"]
+    branches: ["main"]
     paths:
       - "supabase/**"
       - "packages/supabase/src/types.gen.ts"
