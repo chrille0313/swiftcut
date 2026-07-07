@@ -1,0 +1,10 @@
+# Normalize line endings to LF for all text files (both repo and working tree),
+# so Windows checkouts stop tripping oxfmt/CI over CRLF.
+* text=auto eol=lf
+
+# Binary assets git should never touch.
+*.png binary
+*.ico binary
+*.icns binary
+*.woff binary
+*.woff2 binary
