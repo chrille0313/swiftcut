@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { invoke, isTauri } from "@tauri-apps/api/core";
 import { Button } from "@workspace/ui/components/button";
 import {
   Empty,
@@ -19,11 +20,10 @@ function EditorShell() {
   const [version, setVersion] = useState<string | null>(null);
 
   useEffect(() => {
-    // `app_version` is a Rust command exposed by the Tauri shell. Under a plain
-    // browser (`pnpm dev:web`) there is no IPC, so the call rejects and we ignore
-    // it — this is just a smoke test that the JS↔Rust bridge is wired up.
-    import("@tauri-apps/api/core")
-      .then(({ invoke }) => invoke<string>("app_version"))
+    // `app_version` is a Rust command from the Tauri shell. A plain browser
+    // (pnpm dev:web) has no IPC, so only call it when running under Tauri.
+    if (!isTauri()) return;
+    invoke<string>("app_version")
       .then(setVersion)
       .catch(() => {});
   }, []);
@@ -54,8 +54,8 @@ function EditorShell() {
             </EmptyMedia>
             <EmptyTitle>No clip loaded</EmptyTitle>
             <EmptyDescription>
-              Import a video to start trimming. Editing runs fully on your machine — no account, no
-              cloud.
+              Import a video to start trimming. Editing runs fully on your machine, with no account
+              and no cloud.
             </EmptyDescription>
           </EmptyHeader>
           <EmptyContent>
