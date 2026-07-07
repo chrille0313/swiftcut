@@ -68,17 +68,17 @@ The frontend ↔ Rust bridge uses Tauri commands: a `#[tauri::command]` in `src-
 
 ## Scripts
 
-| Command             | Description                                                     |
-| ------------------- | --------------------------------------------------------------- |
-| `pnpm dev`          | Launch the desktop app (Tauri window)                           |
-| `pnpm dev:web`      | Run the frontend in a browser (fast HMR)                        |
-| `pnpm build`        | Build the frontend (`nx run-many -t build`)                     |
-| `pnpm bundle`       | Build the desktop installer (`nx run desktop:bundle`)           |
-| `pnpm typecheck`    | TypeScript type checking across the workspace                   |
-| `pnpm lint`         | Lint with oxlint (`nx run-many -t lint`)                        |
-| `pnpm lint:fix`     | Lint and auto-fix                                               |
-| `pnpm format`       | Format with oxfmt                                               |
-| `pnpm test`         | Run tests                                                       |
+| Command          | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| `pnpm dev`       | Launch the desktop app (Tauri window)                 |
+| `pnpm dev:web`   | Run the frontend in a browser (fast HMR)              |
+| `pnpm build`     | Build the frontend (`nx run-many -t build`)           |
+| `pnpm bundle`    | Build the desktop installer (`nx run desktop:bundle`) |
+| `pnpm typecheck` | TypeScript type checking across the workspace         |
+| `pnpm lint`      | Lint with oxlint (`nx run-many -t lint`)              |
+| `pnpm lint:fix`  | Lint and auto-fix                                     |
+| `pnpm format`    | Format with oxfmt                                     |
+| `pnpm test`      | Run tests                                             |
 
 Nx caches task results - re-running an unchanged `lint`/`typecheck`/`build` is instant. Use `nx run <project>:<target>` to target a single project, or `nx affected -t <target>` to run only what changed.
 
