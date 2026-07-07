@@ -1,7 +1,7 @@
 [package]
 name = "swiftcut"
 version = "0.1.0"
-description = "SwiftCut — a lightweight, local-first video editor"
+description = "SwiftCut - a lightweight, local-first video editor"
 authors = ["Christian"]
 license = ""
 repository = "https://github.com/chrille0313/swiftcut"

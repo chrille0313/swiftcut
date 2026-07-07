@@ -2,8 +2,8 @@
 
 The Tauri v2 desktop app. Two halves under one project:
 
-- `src-frontend/` — React SPA (Vite, TanStack Router/Query/Form, shadcn/ui). The webview UI.
-- `src-tauri/` — the Rust core (window, native APIs, the video pipeline later).
+- `src-frontend/` - React SPA (Vite, TanStack Router/Query/Form, shadcn/ui). The webview UI.
+- `src-tauri/` - the Rust core (window, native APIs, the video pipeline later).
 
 From the repo root: `pnpm dev:web` iterates on the UI in a browser (fast HMR); `pnpm dev` launches the full desktop app.
 
@@ -22,8 +22,8 @@ src-frontend/<domain>/
 
 ## Import conventions
 
-- `@/*` — app-local imports; resolves to `src-frontend/*` (e.g. `@/editor/hooks`)
-- `@workspace/ui/*` — shared UI components (e.g. `@workspace/ui/components/button`)
+- `@/*` - app-local imports; resolves to `src-frontend/*` (e.g. `@/editor/hooks`)
+- `@workspace/ui/*` - shared UI components (e.g. `@workspace/ui/components/button`)
 - Import directly from source packages. Never create re-export wrapper files.
 - Third-party / native integrations go under `src-frontend/integrations/<service>/`.
 
@@ -33,4 +33,4 @@ Call Rust `#[tauri::command]`s from the frontend via `invoke("command_name")` fr
 
 ## Note
 
-There is no auth in the app currently — it is local-only. Accounts/auth return alongside future cloud/AI features. `packages/supabase` stays dormant and unused until then.
+There is no auth in the app currently - it is local-only. Accounts/auth return alongside future cloud/AI features. `packages/supabase` stays dormant and unused until then.

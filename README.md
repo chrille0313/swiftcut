@@ -8,22 +8,22 @@
 [![Nx](https://img.shields.io/badge/Nx-monorepo-143055?style=for-the-badge&logo=nx&logoColor=white)](https://nx.dev/)
 [![pnpm](https://img.shields.io/badge/pnpm-10-F69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io/)
 
-A lightweight, **local-first** video editor for quick clips — trim a shadowplay, cut a highlight, share it. Built to be fast and out of your way: a Rust core via Tauri, a React UI, no forced accounts, no forced cloud.
+A lightweight, **local-first** video editor for quick clips - trim a shadowplay, cut a highlight, share it. Built to be fast and out of your way: a Rust core via Tauri, a React UI, no forced accounts, no forced cloud.
 
 > Status: early scaffold. The desktop shell launches into a placeholder editor; the video pipeline (import → trim → export) and templates/AI features come next.
 
 ## Stack
 
-- [**Tauri 2**](https://tauri.app/) — native desktop shell with a Rust core and a webview UI
-- [**Rust**](https://www.rust-lang.org/) — the performant core (window, native access, video work)
-- [**React 19**](https://react.dev/) + [**TypeScript 6**](https://www.typescriptlang.org/) (strict) — the UI
-- [**Vite 8**](https://vite.dev/) — frontend build tooling with HMR
-- [**TanStack Router / Query / Form**](https://tanstack.com/) — routing, server state, forms
+- [**Tauri 2**](https://tauri.app/) - native desktop shell with a Rust core and a webview UI
+- [**Rust**](https://www.rust-lang.org/) - the performant core (window, native access, video work)
+- [**React 19**](https://react.dev/) + [**TypeScript 6**](https://www.typescriptlang.org/) (strict) - the UI
+- [**Vite 8**](https://vite.dev/) - frontend build tooling with HMR
+- [**TanStack Router / Query / Form**](https://tanstack.com/) - routing, server state, forms
 - [**shadcn/ui**](https://ui.shadcn.com/) on Radix UI + [**Tailwind CSS v4**](https://tailwindcss.com/)
-- [**Zod 4**](https://zod.dev/) + [**T3 Env**](https://env.t3.gg/) — validation & typed env
-- [**Nx**](https://nx.dev/) — monorepo task orchestration + caching (polyglot: TS + Rust)
-- [**oxlint**](https://oxc.rs/docs/guide/usage/linter) + [**oxfmt**](https://oxc.rs/docs/guide/usage/formatter) — fast lint/format
-- [**Commitlint**](https://commitlint.js.org/) + [**Husky**](https://typicode.github.io/husky/) — conventional commits
+- [**Zod 4**](https://zod.dev/) + [**T3 Env**](https://env.t3.gg/) - validation & typed env
+- [**Nx**](https://nx.dev/) - monorepo task orchestration + caching (polyglot: TS + Rust)
+- [**oxlint**](https://oxc.rs/docs/guide/usage/linter) + [**oxfmt**](https://oxc.rs/docs/guide/usage/formatter) - fast lint/format
+- [**Commitlint**](https://commitlint.js.org/) + [**Husky**](https://typicode.github.io/husky/) - conventional commits
 
 ## Prerequisites
 
@@ -56,15 +56,15 @@ pnpm dev
 ├── packages/
 │   ├── ui/                         # Shared shadcn/ui components
 │   ├── lint-config/                # Shared oxlint / oxfmt config
-│   └── supabase/                   # DORMANT — future cloud/AI features only
-├── supabase/                       # DORMANT — config/migrations/functions
+│   └── supabase/                   # DORMANT - future cloud/AI features only
+├── supabase/                       # DORMANT - config/migrations/functions
 ├── nx.json                         # Nx task orchestration
 └── pnpm-workspace.yaml
 ```
 
 The frontend ↔ Rust bridge uses Tauri commands: a `#[tauri::command]` in `src-tauri/src/lib.rs` (e.g. `app_version`) is called from the UI via `invoke()` from `@tauri-apps/api/core`.
 
-> **On Supabase:** the template this project started from shipped Supabase auth/DB. SwiftCut is local-only, so those pieces are kept **dormant** — nothing imports them and the app runs fully offline. They'll be reactivated when cloud/AI/template-sharing features arrive.
+> **On Supabase:** the template this project started from shipped Supabase auth/DB. SwiftCut is local-only, so those pieces are kept **dormant** - nothing imports them and the app runs fully offline. They'll be reactivated when cloud/AI/template-sharing features arrive.
 
 ## Scripts
 
@@ -80,7 +80,7 @@ The frontend ↔ Rust bridge uses Tauri commands: a `#[tauri::command]` in `src-
 | `pnpm format`       | Format with oxfmt                                               |
 | `pnpm test`         | Run tests                                                       |
 
-Nx caches task results — re-running an unchanged `lint`/`typecheck`/`build` is instant. Use `nx run <project>:<target>` to target a single project, or `nx affected -t <target>` to run only what changed.
+Nx caches task results - re-running an unchanged `lint`/`typecheck`/`build` is instant. Use `nx run <project>:<target>` to target a single project, or `nx affected -t <target>` to run only what changed.
 
 ## Adding UI
 

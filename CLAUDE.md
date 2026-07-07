@@ -1,16 +1,16 @@
 # SwiftCut
 
-A lightweight, local-first video editor built with Tauri (Rust) + React. Fast, no bloat, no forced cloud — the antithesis of ClipChamp.
+A lightweight, local-first video editor built with Tauri (Rust) + React. Fast, no bloat, no forced cloud - the antithesis of ClipChamp.
 
 ## Architecture
 
 pnpm monorepo orchestrated by **Nx**:
 
-- `apps/desktop/` — the Tauri v2 desktop app
-  - `src-frontend/` — React + Vite UI (the webview): TanStack Router/Query/Form, shadcn/ui
-  - `src-tauri/` — Rust core: window, native access, and (later) the video pipeline
-- `packages/` — shared libraries (`ui` — shadcn/ui components; `lint-config` — shared oxlint/oxfmt)
-- `packages/supabase/` + `supabase/` — **DORMANT**. Kept for future cloud/AI features; nothing imports them and the app runs fully local without them. Do not wire them into the core editor.
+- `apps/desktop/` - the Tauri v2 desktop app
+  - `src-frontend/` - React + Vite UI (the webview): TanStack Router/Query/Form, shadcn/ui
+  - `src-tauri/` - Rust core: window, native access, and (later) the video pipeline
+- `packages/` - shared libraries (`ui` - shadcn/ui components; `lint-config` - shared oxlint/oxfmt)
+- `packages/supabase/` + `supabase/` - **DORMANT**. Kept for future cloud/AI features; nothing imports them and the app runs fully local without them. Do not wire them into the core editor.
 
 ## Conventions
 
@@ -26,7 +26,7 @@ pnpm monorepo orchestrated by **Nx**:
 
 See `scripts` in the root `package.json`. Key ones:
 
-- `pnpm dev` — launch the desktop app (Tauri window)
-- `pnpm dev:web` — run the frontend in a browser with fast HMR (no Rust rebuild)
-- `pnpm build` — build the frontend; `pnpm bundle` — produce a desktop installer
-- `pnpm lint` / `pnpm typecheck` / `pnpm test` — via Nx across the workspace
+- `pnpm dev` - launch the desktop app (Tauri window)
+- `pnpm dev:web` - run the frontend in a browser with fast HMR (no Rust rebuild)
+- `pnpm build` - build the frontend; `pnpm bundle` - produce a desktop installer
+- `pnpm lint` / `pnpm typecheck` / `pnpm test` - via Nx across the workspace
