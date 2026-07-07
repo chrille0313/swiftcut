@@ -8,39 +8,39 @@
 [![Nx](https://img.shields.io/badge/Nx-monorepo-143055?style=for-the-badge&logo=nx&logoColor=white)](https://nx.dev/)
 [![pnpm](https://img.shields.io/badge/pnpm-10-F69220?style=for-the-badge&logo=pnpm&logoColor=white)](https://pnpm.io/)
 
-A lightweight, **local-first** video editor for quick clips - trim a shadowplay, cut a highlight, share it. Built to be fast and out of your way: a Rust core via Tauri, a React UI, no forced accounts, no forced cloud.
+A lightweight, **local-first** video editor for quick clips. Trim a shadowplay, cut a highlight, and share it. It stays fast and out of your way: a Rust core via Tauri, a React UI, no forced accounts, and no forced cloud.
 
-> Status: early scaffold. The desktop shell launches into a placeholder editor; the video pipeline (import → trim → export) and templates/AI features come next.
+> Status: early scaffold. The desktop shell launches into a placeholder editor. The video pipeline (import, trim, export) and the templates/AI features come next.
 
 ## Stack
 
-- [**Tauri 2**](https://tauri.app/) - native desktop shell with a Rust core and a webview UI
-- [**Rust**](https://www.rust-lang.org/) - the performant core (window, native access, video work)
-- [**React 19**](https://react.dev/) + [**TypeScript 6**](https://www.typescriptlang.org/) (strict) - the UI
-- [**Vite 8**](https://vite.dev/) - frontend build tooling with HMR
-- [**TanStack Router / Query / Form**](https://tanstack.com/) - routing, server state, forms
+- [**Tauri 2**](https://tauri.app/): native desktop shell with a Rust core and a webview UI
+- [**Rust**](https://www.rust-lang.org/): the performant core (window, native access, video work)
+- [**React 19**](https://react.dev/) + [**TypeScript 6**](https://www.typescriptlang.org/) in strict mode for the UI
+- [**Vite 8**](https://vite.dev/): frontend build tooling with HMR
+- [**TanStack Router / Query / Form**](https://tanstack.com/): routing, server state, and forms
 - [**shadcn/ui**](https://ui.shadcn.com/) on Radix UI + [**Tailwind CSS v4**](https://tailwindcss.com/)
-- [**Zod 4**](https://zod.dev/) + [**T3 Env**](https://env.t3.gg/) - validation & typed env
-- [**Nx**](https://nx.dev/) - monorepo task orchestration + caching (polyglot: TS + Rust)
-- [**oxlint**](https://oxc.rs/docs/guide/usage/linter) + [**oxfmt**](https://oxc.rs/docs/guide/usage/formatter) - fast lint/format
-- [**Commitlint**](https://commitlint.js.org/) + [**Husky**](https://typicode.github.io/husky/) - conventional commits
+- [**Zod 4**](https://zod.dev/) + [**T3 Env**](https://env.t3.gg/) for validation and typed env
+- [**Nx**](https://nx.dev/): monorepo task orchestration and caching across a polyglot TS + Rust tree
+- [**oxlint**](https://oxc.rs/docs/guide/usage/linter) + [**oxfmt**](https://oxc.rs/docs/guide/usage/formatter) for fast lint and format
+- [**Commitlint**](https://commitlint.js.org/) + [**Husky**](https://typicode.github.io/husky/) for conventional commits
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) >= 24 and [pnpm](https://pnpm.io/) >= 10
 - A [Rust](https://www.rust-lang.org/tools/install) toolchain (`rustup`, `cargo`)
-- **Windows:** the [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (MSVC linker). WebView2 ships with Windows 11.
-- See [Tauri's prerequisites](https://tauri.app/start/prerequisites/) for macOS/Linux system dependencies.
+- On **Windows**, the [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (MSVC linker). WebView2 ships with Windows 11.
+- See [Tauri's prerequisites](https://tauri.app/start/prerequisites/) for macOS and Linux system dependencies.
 
 ## Quick Start
 
 ```bash
 pnpm install
 
-# Iterate on the UI in a browser (fast HMR, no Rust rebuild):
-pnpm dev:web        # → http://localhost:8080
+# Iterate on the UI in a browser (fast HMR, no Rust rebuild). Serves localhost:8080.
+pnpm dev:web
 
-# Launch the full desktop app (first Rust build is slow):
+# Launch the full desktop app. The first Rust build is slow.
 pnpm dev
 ```
 
@@ -56,15 +56,15 @@ pnpm dev
 ├── packages/
 │   ├── ui/                         # Shared shadcn/ui components
 │   ├── lint-config/                # Shared oxlint / oxfmt config
-│   └── supabase/                   # DORMANT - future cloud/AI features only
-├── supabase/                       # DORMANT - config/migrations/functions
+│   └── supabase/                   # Dormant, for future cloud/AI features
+├── supabase/                       # Dormant config, migrations, functions
 ├── nx.json                         # Nx task orchestration
 └── pnpm-workspace.yaml
 ```
 
-The frontend ↔ Rust bridge uses Tauri commands: a `#[tauri::command]` in `src-tauri/src/lib.rs` (e.g. `app_version`) is called from the UI via `invoke()` from `@tauri-apps/api/core`.
+The frontend talks to Rust through Tauri commands. A `#[tauri::command]` in `src-tauri/src/lib.rs` (for example `app_version`) is called from the UI with `invoke()` from `@tauri-apps/api/core`.
 
-> **On Supabase:** the template this project started from shipped Supabase auth/DB. SwiftCut is local-only, so those pieces are kept **dormant** - nothing imports them and the app runs fully offline. They'll be reactivated when cloud/AI/template-sharing features arrive.
+> **On Supabase:** the template this project started from shipped Supabase auth and DB. SwiftCut is local-only, so those pieces are kept dormant. Nothing imports them, and the app runs fully offline. They will be reactivated when cloud, AI, and template-sharing features arrive.
 
 ## Scripts
 
@@ -80,7 +80,7 @@ The frontend ↔ Rust bridge uses Tauri commands: a `#[tauri::command]` in `src-
 | `pnpm format`    | Format with oxfmt                                     |
 | `pnpm test`      | Run tests                                             |
 
-Nx caches task results - re-running an unchanged `lint`/`typecheck`/`build` is instant. Use `nx run <project>:<target>` to target a single project, or `nx affected -t <target>` to run only what changed.
+Nx caches task results, so re-running an unchanged `lint`, `typecheck`, or `build` is instant. Use `nx run <project>:<target>` to target a single project, or `nx affected -t <target>` to run only what changed.
 
 ## Adding UI
 
@@ -110,11 +110,11 @@ cargo clippy       # lint
 cargo check        # type-check the crate
 ```
 
-Expose new functionality as a `#[tauri::command]`, register it in `tauri::generate_handler![...]`, and keep heavy/long-running work (decode, encode, file I/O) off the UI thread with async commands or background threads.
+Expose new functionality as a `#[tauri::command]`, register it in `tauri::generate_handler![...]`, and keep heavy or long-running work (decode, encode, file I/O) off the UI thread with async commands or background threads.
 
 ## Commit Messages
 
-[Conventional commits](https://www.conventionalcommits.org/) enforced by commitlint + husky.
+[Conventional commits](https://www.conventionalcommits.org/) are enforced by commitlint + husky.
 
 ```
 feat(editor): add trim handles to the timeline
@@ -124,4 +124,4 @@ chore(deps): update tauri to 2.x
 
 ## CI
 
-Pull requests run, in parallel: **Typecheck**, **Lint** (oxlint w/ GitHub annotations), **Format** (oxfmt), **Build**, **Commitlint**, and **Rust** (`cargo fmt --check` + `clippy` + `check` on `src-tauri`). The heavy `tauri build` bundle is intentionally not run per-PR.
+Pull requests run these checks in parallel: **Typecheck**, **Lint** (oxlint with GitHub annotations), **Format** (oxfmt), **Build**, **Commitlint**, and **Rust** (`cargo fmt --check`, `clippy`, and `check` on `src-tauri`). The heavy `tauri build` bundle is intentionally not run per-PR.
