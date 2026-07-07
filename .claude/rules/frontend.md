@@ -1,6 +1,6 @@
 ---
 paths:
-  - "apps/*/src/**"
+  - "apps/*/src-frontend/**"
   - "packages/ui/src/**"
 ---
 
