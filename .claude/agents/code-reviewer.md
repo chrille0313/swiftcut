@@ -16,6 +16,7 @@ You are a code reviewer for this monorepo. When invoked:
    - Zod schemas for validation
    - TanStack Form for forms (not react-hook-form)
    - RLS enabled on any new tables
+   - Rust called from the frontend via `#[tauri::command]` + `invoke()`, with heavy work kept off the UI thread
 3. Check for security issues:
    - No secrets or keys in committed code
    - No error message leaks in production (`import.meta.env.DEV` guard)

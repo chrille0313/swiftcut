@@ -2,7 +2,7 @@ name: Deploy Supabase
 
 on:
   push:
-    branches: ["main", "master", "development", "develop"]
+    branches: ["main"]
     paths:
       - "supabase/**"
 

@@ -17,6 +17,10 @@
       "WebFetch(domain:env.t3.gg)",
       "WebFetch(domain:lucide.dev)",
       "WebFetch(domain:turbo.build)",
+      "WebFetch(domain:nx.dev)",
+      "WebFetch(domain:tauri.app)",
+      "WebFetch(domain:doc.rust-lang.org)",
+      "WebFetch(domain:crates.io)",
       "WebFetch(domain:pnpm.io)",
       "WebFetch(domain:oxc.rs)",
       "WebFetch(domain:commitlint.js.org)",
@@ -43,19 +47,30 @@
       "Bash(git commit:*)",
       "Bash(git fetch:*)",
       "Bash(git remote:*)",
+      "Bash(git mv:*)",
       "Bash(pnpm install:*)",
       "Bash(pnpm add:*)",
       "Bash(pnpm remove:*)",
       "Bash(pnpm dev:*)",
+      "Bash(pnpm dev:web:*)",
       "Bash(pnpm build:*)",
+      "Bash(pnpm bundle:*)",
+      "Bash(pnpm app:*)",
+      "Bash(pnpm tauri:*)",
       "Bash(pnpm typecheck:*)",
       "Bash(pnpm lint:*)",
       "Bash(pnpm format:*)",
       "Bash(pnpm format:check:*)",
       "Bash(pnpm test:*)",
+      "Bash(pnpm exec:*)",
       "Bash(pnpm outdated:*)",
       "Bash(pnpm db:*)",
-      "Bash(npx supabase:*)"
+      "Bash(npx supabase:*)",
+      "Bash(nx:*)",
+      "Bash(cargo:*)",
+      "Bash(rustc:*)",
+      "Bash(rustup:*)",
+      "Bash(rustfmt:*)"
     ]
   },
   "enabledPlugins": {
@@ -68,7 +83,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // empty' | xargs -I {} sh -c 'pnpm exec oxlint --fix \"$1\" && pnpm exec oxfmt \"$1\"' _ {}"
+            "command": "file=$(jq -r '.tool_input.file_path // empty'); [ -z \"$file\" ] && exit 0; pnpm exec oxlint --fix \"$file\"; pnpm exec oxfmt \"$file\" 2>/dev/null || true; command -v rustfmt >/dev/null 2>&1 && rustfmt --edition 2021 \"$file\" 2>/dev/null || true"
           }
         ]
       }

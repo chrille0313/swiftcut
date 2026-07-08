@@ -18,5 +18,5 @@ When working with the database:
 
 Key locations:
 
-- `supabase/` — config, migrations, seed data, edge functions
-- `**/integrations/supabase/` — client singleton and generated types in each app
+- `supabase/`: config, migrations, seed data, edge functions
+- `**/integrations/supabase/`: client singleton and generated types in each app

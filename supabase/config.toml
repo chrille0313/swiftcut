@@ -98,8 +98,8 @@ api_url = "http://127.0.0.1"
 openai_api_key = "env(OPENAI_API_KEY)"
 
 # ---------------------------------------------------------------------------
-# Email testing (Inbucket) — local only
-# Emails sent with the local dev setup are not actually sent — rather, they
+# Email testing (Inbucket) - local only
+# Emails sent with the local dev setup are not actually sent - rather, they
 # are monitored, and you can view the emails that would have been sent from
 # the web interface.
 # ---------------------------------------------------------------------------
@@ -194,7 +194,7 @@ enable_signup = true
 # addresses. If disabled, only the new email is required to confirm.
 double_confirm_changes = true
 # If enabled, users need to confirm their email address before signing in.
-# Disabled for local development — enable in production.
+# Disabled for local development - enable in production.
 enable_confirmations = false
 secure_password_change = false
 # Controls the minimum amount of time that must pass before sending another signup
@@ -260,7 +260,7 @@ message_service_sid = ""
 auth_token = "env(SUPABASE_AUTH_SMS_TWILIO_AUTH_TOKEN)"
 
 # ---------------------------------------------------------------------------
-# Auth — MFA
+# Auth - MFA
 # Multi-factor-authentication is available to Supabase Pro plan.
 # ---------------------------------------------------------------------------
 [auth.mfa]
@@ -283,7 +283,7 @@ max_frequency = "5s"
 # verify_enabled = true
 
 # ---------------------------------------------------------------------------
-# Auth — OAuth Providers
+# Auth - OAuth Providers
 # Uncomment and configure the providers you need.
 # Full list: apple, azure, bitbucket, discord, facebook, github, gitlab,
 # google, keycloak, linkedin_oidc, notion, twitch, twitter, x, slack,
@@ -311,13 +311,13 @@ max_frequency = "5s"
 # skip_nonce_check = false
 
 # ---------------------------------------------------------------------------
-# Auth — Web3
+# Auth - Web3
 # ---------------------------------------------------------------------------
 [auth.web3.solana]
 enabled = false
 
 # ---------------------------------------------------------------------------
-# Auth — Third-party providers
+# Auth - Third-party providers
 # ---------------------------------------------------------------------------
 [auth.third_party.firebase]
 enabled = false
@@ -339,7 +339,7 @@ enabled = false
 # domain = "example.clerk.accounts.dev"
 
 # ---------------------------------------------------------------------------
-# Auth — OAuth Server
+# Auth - OAuth Server
 # ---------------------------------------------------------------------------
 [auth.oauth_server]
 enabled = false
@@ -352,8 +352,8 @@ allow_dynamic_registration = false
 [edge_runtime]
 enabled = true
 # Supported request policies: `oneshot`, `per_worker`.
-# `per_worker` (default) — enables hot reload during local development.
-# `oneshot` — fallback mode if hot reload causes issues (e.g. in large repos or with symlinks).
+# `per_worker` (default) - enables hot reload during local development.
+# `oneshot` - fallback mode if hot reload causes issues (e.g. in large repos or with symlinks).
 policy = "per_worker"
 # Port to attach the Chrome inspector for debugging edge functions.
 inspector_port = 8083
@@ -391,7 +391,7 @@ s3_secret_key = "env(S3_SECRET_KEY)"
 # Base config above is used for local development.
 # ---------------------------------------------------------------------------
 
-# Production — applied when pushing to the production project.
+# Production - applied when pushing to the production project.
 # [remotes.production]
 # project_id = "your-production-project-id"
 #
@@ -421,7 +421,7 @@ s3_secret_key = "env(S3_SECRET_KEY)"
 # [remotes.production.auth.rate_limit]
 # email_sent = 100
 
-# Staging — applied when pushing to the staging project.
+# Staging - applied when pushing to the staging project.
 # [remotes.staging]
 # project_id = "your-staging-project-id"
 #
